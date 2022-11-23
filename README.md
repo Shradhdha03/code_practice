@@ -1,4 +1,4 @@
-Step 1: Clone the Repo using **`git clone https://github.com/Shradhdha03/tdd.git`**
+Step 1: Clone the Repo using **`https://github.com/Shradhdha03/code_practice.git`**
 
 Step 2: Open the project with Visual Studio Code
 
