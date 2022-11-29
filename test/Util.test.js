@@ -86,4 +86,16 @@ describe('Util', function () {
         expect(util.mergeSort([])).toEqual([]);
         expect(util.mergeSort([0, 0])).toEqual([0, 0]);
     });
+    it('quickSort', function () {
+        let util = new Util();
+        expect(util.quickSort([10, 5])).toEqual([5, 10]);
+        expect(util.quickSort([10, 5,3])).toEqual([3,5, 10]);
+        expect(util.quickSort([10, 4,2,1, 5,3])).toEqual([1,2,3,4,5,10]);
+        expect(util.mergeSort([40, 23, 45, 21, 56, 23, 60, 1, 2, 1])).toEqual([1, 1, 2, 21, 23, 23, 40, 45, 56, 60]);
+        expect(util.mergeSort([])).toEqual([]);
+        expect(util.mergeSort([0, 0])).toEqual([0, 0]);
+
+    });
+
+
 });

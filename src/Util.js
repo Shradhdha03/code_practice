@@ -127,6 +127,34 @@ class Util {
         }
         return mergedArray.concat(left.slice(leftPoint)).concat(right.slice(rightPoint));;
     }
+
+    quickSort(numbers) {
+        if (numbers.length <= 1) {
+            return numbers;
+        }
+        let pivotIndex = numbers.length - 1;
+        let pointer = 0;
+        while (pointer < pivotIndex) {
+            if (numbers[pointer] > numbers[pivotIndex]) {
+                numbers.splice(pivotIndex + 1, 0, numbers[pointer])
+                numbers.splice(pointer, 1);
+                pivotIndex--;
+            } else {
+                pointer++;
+            }
+        }
+        const leftPart = numbers.slice(0, pivotIndex);
+        const rightPart = numbers.slice(pivotIndex + 1, numbers.length);
+
+        return this.quickMerge(this.quickSort(leftPart), numbers[pivotIndex], this.quickSort(rightPart))
+    }
+
+    quickMerge(leftArray, pivot, rightArray) {
+        let mergedArray = leftArray.concat([pivot]).concat(rightArray);
+        return mergedArray;
+    }
+
+
 }
 
 module.exports = Util;
