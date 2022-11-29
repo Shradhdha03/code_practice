@@ -82,15 +82,50 @@ class Util {
     }
 
     insertionSort(numbers) {
-
         for (let i = 1; i < numbers.length; i++) {
-
-            for (let j = i; j >= 0; j--) {
-                if (numbers[i] < numbers[j]) {
-
+            if (numbers[0] > numbers[i]) {
+                this.removeAndInsert(numbers, i, 0);
+            } else {
+                for (let index = 0; index < i; index++) {
+                    if (numbers[index] > numbers[i]) {
+                        this.removeAndInsert(numbers, i, index);
+                    }
                 }
             }
         }
+        return numbers;
+    }
+
+    removeAndInsert(numbers, removeIndex, insertIndex) {
+        const temp = numbers[removeIndex];
+        numbers.splice(removeIndex, 1);
+        numbers.splice(insertIndex, 0, temp);
+    }
+
+    mergeSort(numbers) {
+        if (numbers.length <= 1) {
+            return numbers;
+        }
+        const middlePoint = Math.floor(numbers.length / 2);
+        const leftPart = numbers.slice(0, middlePoint);
+        const rightPart = numbers.slice(middlePoint, numbers.length);
+        return this.merge(this.mergeSort(leftPart), this.mergeSort(rightPart))
+    }
+
+    merge(left, right) {
+        let leftPoint = 0;
+        let rightPoint = 0;
+        let mergedArray = [];
+        while (leftPoint < left.length && rightPoint < right.length) {
+            if (left[leftPoint] < right[rightPoint]) {
+                mergedArray.push(left[leftPoint]);
+                leftPoint++;
+            } else {
+                mergedArray.push(right[rightPoint]);
+                rightPoint++;
+            }
+        }
+        return mergedArray.concat(left.slice(leftPoint)).concat(right.slice(rightPoint));;
     }
 }
 

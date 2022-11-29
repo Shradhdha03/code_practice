@@ -67,4 +67,23 @@ describe('Util', function () {
         expect(util.selectionSort([])).toEqual([]);
         expect(util.selectionSort([0, 0])).toEqual([0, 0]);
     })
+
+    it('insertionSort', function () {
+        let util = new Util();
+        expect(util.insertionSort([10, 5])).toEqual([5, 10]);
+        expect(util.insertionSort([10, 5, 3])).toEqual([3, 5, 10]);
+        expect(util.insertionSort([10, 5, 3, 9])).toEqual([3, 5, 9, 10]);
+        expect(util.insertionSort([40, 23, 45, 21, 56, 23, 60, 1, 2, 1])).toEqual([1, 1, 2, 21, 23, 23, 40, 45, 56, 60]);
+        expect(util.insertionSort([])).toEqual([]);
+        expect(util.insertionSort([0, 0])).toEqual([0, 0]);
+    })
+    it('mergeSort', function () {
+        let util = new Util();
+        expect(util.mergeSort([10, 5])).toEqual([5, 10]);
+        expect(util.mergeSort([10, 5, 3])).toEqual([3, 5, 10]);
+        expect(util.mergeSort([10, 5, 3, 9])).toEqual([3, 5, 9, 10]);
+        expect(util.mergeSort([40, 23, 45, 21, 56, 23, 60, 1, 2, 1])).toEqual([1, 1, 2, 21, 23, 23, 40, 45, 56, 60]);
+        expect(util.mergeSort([])).toEqual([]);
+        expect(util.mergeSort([0, 0])).toEqual([0, 0]);
+    });
 });
