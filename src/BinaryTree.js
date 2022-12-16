@@ -10,7 +10,6 @@ class BinaryTree {
     constructor() {
         this.root = null;
     }
-
     insert(value) {
         let node = new Node(value);
         if (this.root == null) {
@@ -27,8 +26,6 @@ class BinaryTree {
         }
         return this.root;
     }
-
-
     traverseTree(node, value) {
         if (node.value > value) {
             return this.treverseASide('left', node, value);
@@ -36,7 +33,6 @@ class BinaryTree {
             return this.treverseASide('right', node, value);
         }
     }
-
     treverseASide(side, node, value) {
         if (node[side] === null) {
             return node;
@@ -44,8 +40,6 @@ class BinaryTree {
             return this.traverseTree(node[side], value);
         }
     }
-
-
     traverseLookupTree(node, value, parenNode, side) {
         if (node) {
             if (node.value > value) {
@@ -58,8 +52,6 @@ class BinaryTree {
         }
         return false;
     }
-
-
     lookup(value) {
         if (this.root) {
             let currentNode = this.traverseLookupTree(this.root, value);
@@ -69,9 +61,6 @@ class BinaryTree {
         }
         return false;
     }
-
-
-
     remove(value) {
         let [node, parentNode, side] = this.traverseLookupTree(this.root, value);
         //removing last child nodes
@@ -106,6 +95,44 @@ class BinaryTree {
         } else if (node && node.right && node.right.left !== null) {
         }
         return this.root;
+    }
+    BFS() {
+        let currentNode = this.root;
+        let queue = [currentNode];
+        let list = [];
+        while (queue.length > 0) {
+            currentNode = queue.shift();
+            list.push(currentNode.value);
+            if (currentNode.left !== null) {
+                queue.push(currentNode.left)
+            }
+            if (currentNode.right !== null) {
+                queue.push(currentNode.right)
+            }
+        }
+        return list;
+    }
+
+    BFSResersive(queue, list) {
+        if (!queue.length) return list;
+        let currentNode = queue.shift();
+        list.push(currentNode.value);
+        if (currentNode.left !== null) queue.push(currentNode.left);
+        if (currentNode.right !== null) queue.push(currentNode.right);
+        return this.BFSResersive(queue, list);
+    }
+    BFSResersiveFn() {
+        return this.BFSResersive([this.root], []);
+    }
+
+    DFSInOrder() {
+
+    }
+    DFSPreOrder() {
+
+    }
+    DFSPostOrder() {
+
     }
 }
 module.exports = BinaryTree;

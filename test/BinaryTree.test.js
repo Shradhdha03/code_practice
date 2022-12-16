@@ -157,6 +157,19 @@ describe('BinaryTree', function () {
 
         expect(tree.remove(170)).toEqual(null);
     });
+
+
+    it('BFS', () => {
+        let tree = new BinaryTree();
+        RecreateTree(tree);
+        expect(tree.BFS()).toEqual([9, 4, 20, 1, 6, 15, 170]);
+    });
+
+    it('BFS Recursive', () => {
+        let tree = new BinaryTree();
+        RecreateTree(tree);
+        expect(tree.BFSResersiveFn()).toEqual([9, 4, 20, 1, 6, 15, 170]);
+    });
 });
 
 function RecreateTree(tree) {
