@@ -126,13 +126,35 @@ class BinaryTree {
     }
 
     DFSInOrder() {
-
+        //1 4 6 9 15 20 170
+        return this.traverseInOrder(this.root, []);
+    }
+    traverseInOrder(node, list) {
+        if (node.left)  this.traverseInOrder(node.left, list);
+        list.push(node.value);
+        if (node.right)  this.traverseInOrder(node.right, list);
+        return list;
     }
     DFSPreOrder() {
-
+        //to REcreate a tree
+        //9 4 1 6 20 15 170
+        return this.traversePreOrder(this.root, []);
+    }
+    traversePreOrder(node, list) {
+        list.push(node.value);
+        if (node.left)  this.traversePreOrder(node.left, list);
+        if (node.right)  this.traversePreOrder(node.right, list);
+        return list;
     }
     DFSPostOrder() {
-
+        //1 6 4 15 170 20 9
+        return this.traversePostOrder(this.root, []);
+    }
+    traversePostOrder(node, list) {
+        if (node.left)  this.traversePostOrder(node.left, list);
+        if (node.right)  this.traversePostOrder(node.right, list);
+        list.push(node.value);
+        return list;
     }
 }
 module.exports = BinaryTree;

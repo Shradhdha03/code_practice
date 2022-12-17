@@ -170,6 +170,24 @@ describe('BinaryTree', function () {
         RecreateTree(tree);
         expect(tree.BFSResersiveFn()).toEqual([9, 4, 20, 1, 6, 15, 170]);
     });
+
+    it.only('DFSInOrder', () => {
+        let tree = new BinaryTree();
+        RecreateTree(tree);
+        expect(tree.DFSInOrder()).toEqual([1, 4, 6, 9, 15, 20, 170]);
+    });
+
+    it.only('DFSPreOrder', () => {
+        let tree = new BinaryTree();
+        RecreateTree(tree);
+        expect(tree.DFSPreOrder()).toEqual([9, 4, 1, 6, 20, 15, 170]);
+    });
+    
+    it.only('DFSPostOrder', () => {
+        let tree = new BinaryTree();
+        RecreateTree(tree);
+        expect(tree.DFSPostOrder()).toEqual([1, 6, 4, 15, 170, 20, 9]);
+    });
 });
 
 function RecreateTree(tree) {
