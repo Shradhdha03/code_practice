@@ -130,9 +130,9 @@ class BinaryTree {
         return this.traverseInOrder(this.root, []);
     }
     traverseInOrder(node, list) {
-        if (node.left)  this.traverseInOrder(node.left, list);
+        if (node.left) this.traverseInOrder(node.left, list);
         list.push(node.value);
-        if (node.right)  this.traverseInOrder(node.right, list);
+        if (node.right) this.traverseInOrder(node.right, list);
         return list;
     }
     DFSPreOrder() {
@@ -142,8 +142,8 @@ class BinaryTree {
     }
     traversePreOrder(node, list) {
         list.push(node.value);
-        if (node.left)  this.traversePreOrder(node.left, list);
-        if (node.right)  this.traversePreOrder(node.right, list);
+        if (node.left) this.traversePreOrder(node.left, list);
+        if (node.right) this.traversePreOrder(node.right, list);
         return list;
     }
     DFSPostOrder() {
@@ -151,10 +151,57 @@ class BinaryTree {
         return this.traversePostOrder(this.root, []);
     }
     traversePostOrder(node, list) {
-        if (node.left)  this.traversePostOrder(node.left, list);
-        if (node.right)  this.traversePostOrder(node.right, list);
+        if (node.left) this.traversePostOrder(node.left, list);
+        if (node.right) this.traversePostOrder(node.right, list);
         list.push(node.value);
         return list;
+    }
+
+
+    height() {
+        return this.maxDepth(this.root);
+    }
+    maxDepth(node) {
+        if (!node) return 0;
+        let leftDepth = 0, rightDepth = 0;
+        if (node.left) leftDepth = this.maxDepth(node.left);
+        if (node.right) rightDepth = this.maxDepth(node.right);
+        return Math.max(leftDepth, rightDepth) + 1;
+
+    }
+    heightWithBFS() {
+        let queue = [];
+        let height = 0;
+        if (this.root) queue.push(this.root);
+        while (queue.length > 0) {
+            let size = queue.length;
+            for (let index = 0; index < size; index++) {
+                let currentnode = queue.shift();
+                if (currentnode.left) queue.push(currentnode.left);
+                if (currentnode.right) queue.push(currentnode.right);
+            }
+            height += 1;
+        }
+        return height;
+    }
+    heightWithBFSRecursive() {
+        let queue = [];
+        let height = 0;
+        if (this.root) queue.push(this.root);
+        height = this.heightWithBFSRec(queue, height);
+        return height;
+    }
+
+    heightWithBFSRec(queue, height) {
+        if (queue.length == 0) return height;
+        let size = queue.length;
+        for (let index = 0; index < size; index++) {
+            let currentnode = queue.shift();
+            if (currentnode.left) queue.push(currentnode.left);
+            if (currentnode.right) queue.push(currentnode.right);
+        }
+        height += 1;
+        return this.heightWithBFSRec(queue, height);
     }
 }
 module.exports = BinaryTree;

@@ -171,22 +171,40 @@ describe('BinaryTree', function () {
         expect(tree.BFSResersiveFn()).toEqual([9, 4, 20, 1, 6, 15, 170]);
     });
 
-    it.only('DFSInOrder', () => {
+    it('DFSInOrder', () => {
         let tree = new BinaryTree();
         RecreateTree(tree);
         expect(tree.DFSInOrder()).toEqual([1, 4, 6, 9, 15, 20, 170]);
     });
 
-    it.only('DFSPreOrder', () => {
+    it('DFSPreOrder', () => {
         let tree = new BinaryTree();
         RecreateTree(tree);
         expect(tree.DFSPreOrder()).toEqual([9, 4, 1, 6, 20, 15, 170]);
     });
     
-    it.only('DFSPostOrder', () => {
+    it('DFSPostOrder', () => {
         let tree = new BinaryTree();
         RecreateTree(tree);
         expect(tree.DFSPostOrder()).toEqual([1, 6, 4, 15, 170, 20, 9]);
+    });
+
+    it.only('heightwithDFS', () => {
+        let tree = new BinaryTree();
+        RecreateTree(tree);
+        expect(tree.height()).toEqual(3);
+    });
+
+    it.only('heightWithBFS', () => {
+        let tree = new BinaryTree();
+        RecreateTree(tree);
+        expect(tree.heightWithBFS()).toEqual(3);
+    });
+
+    it.only('heightWithBFSRecursive', () => {
+        let tree = new BinaryTree();
+        RecreateTree(tree);
+        expect(tree.heightWithBFSRecursive()).toEqual(3);
     });
 });
 
