@@ -167,7 +167,6 @@ class BinaryTree {
         if (node.left) leftDepth = this.maxDepth(node.left);
         if (node.right) rightDepth = this.maxDepth(node.right);
         return Math.max(leftDepth, rightDepth) + 1;
-
     }
     heightWithBFS() {
         let queue = [];
