@@ -109,5 +109,14 @@ describe('Util', function () {
         expect(arr).toEqual([10, 4, 2, 1, 5, 3, 0, 0, 0]);
     })
 
+    it('column number', function () {
+        let util = new Util();
 
+        expect(util.columnNumber('A')).toEqual(1);
+        expect(util.columnNumber('Z')).toEqual(26);
+        expect(util.columnNumber('AA')).toEqual(27);
+        expect(util.columnNumber('AB')).toEqual(28);
+        expect(util.columnNumber('ZZ')).toEqual(702);
+        expect(util.columnNumber('FXSHRXW')).toEqual(2147483647);
+    })
 });

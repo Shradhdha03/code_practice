@@ -187,9 +187,18 @@ class Util {
     };
 
 
+    columnNumber(columnTitle) {
+        const charNumber =(columnTitle.charCodeAt(0)%65)+1
+        if (columnTitle.length == 1) {
+            return charNumber;
+        }
+        const number = (Math.pow(26, (columnTitle.length - 1)) * charNumber);
+        const prev = this.columnNumber(columnTitle.substring(1));
+        return number + prev;
+    }
 
 
-
+   
 }
 
 module.exports = Util;
