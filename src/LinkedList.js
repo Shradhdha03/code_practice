@@ -84,8 +84,21 @@ class LinkedList {
             current_node = current_node.next;
         }
     }
-    reverse2(){
-        
+    reverseRec(){
+        const old_list = this.head;
+        let node = new Node(old_list.value);
+        this.head = node;
+        this.tail = node;
+        this.length = 1;
+        this.prepandRec(old_list.next)
+    }
+    prepandRec(current_node){
+        if(current_node===null){
+            return;
+        }
+        this.prepand(current_node.value);
+        current_node = current_node.next;
+        return this.prepandRec(current_node);
     }
 }
 module.exports = LinkedList;

@@ -67,7 +67,7 @@ describe('LinkedList', function () {
         list.remove(0);
         expect(list.printList()).toEqual([]);
 
-        list = new LinkedList(30);
+        list = new LinkedList(0);
         list.append(10);
 
         list.append(52);
@@ -77,11 +77,16 @@ describe('LinkedList', function () {
         list.append(56);
 
 
-        list.append(44);
+        list.append(0);
 
-        expect(list.printList()).toEqual([30, 10, 52, 34, 56, 44]);
+        expect(list.printList()).toEqual([0, 10, 52, 34, 56, 0]);
         list.reverse();
-        expect(list.printList()).toEqual([44, 56, 34, 52, 10, 30]);
+        expect(list.printList()).toEqual([0, 56, 34, 52, 10, 0]);
+
+        list.reverseRec();
+        expect(list.printList()).toEqual([0, 10, 52, 34, 56, 0]);
+
+
     });
 });
 
