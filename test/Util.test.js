@@ -119,4 +119,11 @@ describe('Util', function () {
         expect(util.columnNumber('ZZ')).toEqual(702);
         expect(util.columnNumber('FXSHRXW')).toEqual(2147483647);
     })
+
+     it('majorityElement', function () {
+        let util = new Util();
+
+        expect(util.majorityElement([2,1,2,1,2])).toEqual(2);
+        expect(util.majorityElementHashMap([2,1,2,1,2])).toEqual(2);
+     });
 });

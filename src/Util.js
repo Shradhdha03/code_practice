@@ -188,7 +188,7 @@ class Util {
 
 
     columnNumber(columnTitle) {
-        const charNumber =(columnTitle.charCodeAt(0)%65)+1
+        const charNumber = (columnTitle.charCodeAt(0) % 65) + 1
         if (columnTitle.length == 1) {
             return charNumber;
         }
@@ -197,8 +197,59 @@ class Util {
         return number + prev;
     }
 
+    majorityElement(nums) {
+        const candidate = this.selectedCandidate(nums);
+        let count = 0;
+        for (let i = 0; i < nums.length; i++) {
+            if (candidate == nums[i]) {
+                count++;
+            }
+        }
+        if (count > nums.length / 2) {
+            return candidate;
+        }
+    };
 
-   
+    selectedCandidate(nums) {
+        let candidate;
+        let count = 0;
+        for (let i = 0; i < nums.length; i++) {
+            if (count == 0) {
+                candidate = nums[i];
+                count++;
+            }
+            else if (candidate == nums[i]) {
+                count++;
+            } else {
+                count--;
+            }
+        }
+        return candidate;
+    }
+
+    majorityElementHashMap(nums) {
+        const hash = {};
+        for (let i = 0; i < nums.length; i++) {
+            if (hash[nums[i]] === undefined) {
+                hash[nums[i]] = 1;
+            } else {
+                hash[nums[i]]++;
+            }
+        }
+        let maxCount=0, number;
+        for(let key in hash){
+            if(hash[key]>maxCount){
+                maxCount=hash[key];
+                number= key;
+            }
+        }
+        if(maxCount>nums.length/2){
+            return parseInt(number);
+        }
+    };
+    //majorityElementSortedArray
+    //majorityElementBST
+
 }
 
 module.exports = Util;
