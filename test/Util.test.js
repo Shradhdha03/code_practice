@@ -126,4 +126,15 @@ describe('Util', function () {
         expect(util.majorityElement([2,1,2,1,2])).toEqual(2);
         expect(util.majorityElementHashMap([2,1,2,1,2])).toEqual(2);
      });
+
+     it('romanToInt', function () {
+        let util = new Util();
+
+        expect(util.romanToInt('III')).toEqual(3);
+        expect(util.romanToInt('LVIII')).toEqual(58);
+        expect(util.romanToInt('MCMXCIV')).toEqual(1994);
+        expect(util.romanToInt('X')).toEqual(10);
+        expect(util.romanToInt('MDCXCV')).toEqual(1695);
+
+     });
 });
