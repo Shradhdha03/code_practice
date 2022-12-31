@@ -120,14 +120,14 @@ describe('Util', function () {
         expect(util.columnNumber('FXSHRXW')).toEqual(2147483647);
     })
 
-     it('majorityElement', function () {
+    it('majorityElement', function () {
         let util = new Util();
 
-        expect(util.majorityElement([2,1,2,1,2])).toEqual(2);
-        expect(util.majorityElementHashMap([2,1,2,1,2])).toEqual(2);
-     });
+        expect(util.majorityElement([2, 1, 2, 1, 2])).toEqual(2);
+        expect(util.majorityElementHashMap([2, 1, 2, 1, 2])).toEqual(2);
+    });
 
-     it('romanToInt', function () {
+    it('romanToInt', function () {
         let util = new Util();
 
         expect(util.romanToInt('III')).toEqual(3);
@@ -136,5 +136,22 @@ describe('Util', function () {
         expect(util.romanToInt('X')).toEqual(10);
         expect(util.romanToInt('MDCXCV')).toEqual(1695);
 
-     });
+    });
+
+    it('maxProfit', function () {
+        let util = new Util();
+
+        expect(util.maxProfit([7, 1, 5, 3, 6, 4])).toEqual(7);
+        expect(util.maxProfit([1, 2, 3, 4, 5])).toEqual(4);
+        expect(util.maxProfit([7, 6, 4, 3, 1])).toEqual(0);
+
+        expect(util.maxProfit1([7, 1, 5, 3, 6, 4])).toEqual(7);
+        expect(util.maxProfit1([1, 2, 3, 4, 5])).toEqual(4);
+        expect(util.maxProfit1([7, 6, 4, 3, 1])).toEqual(0);
+
+        expect(util.maxProfit2([7, 1, 5, 3, 6, 4])).toEqual(7);
+        expect(util.maxProfit2([1, 2, 3, 4, 5])).toEqual(4);
+        expect(util.maxProfit2([7, 6, 4, 3, 1])).toEqual(0);
+
+    });
 });

@@ -236,21 +236,21 @@ class Util {
                 hash[nums[i]]++;
             }
         }
-        let maxCount=0, number;
-        for(let key in hash){
-            if(hash[key]>maxCount){
-                maxCount=hash[key];
-                number= key;
+        let maxCount = 0, number;
+        for (let key in hash) {
+            if (hash[key] > maxCount) {
+                maxCount = hash[key];
+                number = key;
             }
         }
-        if(maxCount>nums.length/2){
+        if (maxCount > nums.length / 2) {
             return parseInt(number);
         }
     };
     //majorityElementSortedArray
     //majorityElementBST
 
-    romanToInt (s) {
+    romanToInt(s) {
         const roman_map = {
             'I': 1,
             'V': 5,
@@ -272,6 +272,62 @@ class Util {
             }
         }
         return sum;
+    }
+
+    maxProfit(prices) {
+        let profit = 0;
+        let valley = prices[0];
+        let peak = prices[0];
+        let i = 0;
+        while (i < prices.length - 1) {
+
+            while (i < prices.length - 1 && prices[i] >= prices[i + 1])
+                i++;
+            valley = prices[i];
+
+            while (i < prices.length - 1 && prices[i] <= prices[i + 1])
+                i++;
+            peak = prices[i];
+
+            profit += peak - valley;
+        }
+        return profit;
+    }
+
+    maxProfit1(prices) {
+        let profit = 0;
+        for (let i = 1; i < prices.length; i++) {
+            if (prices[i - 1] < prices[i]) {
+                profit += (prices[i] - prices[i - 1]);
+            }
+        }
+        return profit;
+    }
+
+
+    maxProfit2(prices) {
+        let profit = 0;
+
+        let buyPrice = prices[0];
+        let sellPrice = -1;
+        for (let i = 1; i < prices.length; i++) {
+            if (prices[i - 1] < prices[i]) {
+                buyPrice = Math.min(buyPrice, prices[i - 1]);
+                sellPrice = Math.max(sellPrice, prices[i]);
+            } else {
+                if (buyPrice > -1 && sellPrice > -1 && buyPrice < sellPrice) {
+                    profit += (sellPrice - buyPrice);
+                    buyPrice = prices[i];
+                    sellPrice = -1;
+                } else {
+                    buyPrice = Math.min(buyPrice, prices[i]);
+                }
+            }
+        }
+        if (buyPrice > -1 && sellPrice > -1 && buyPrice < sellPrice) {
+            profit += (sellPrice - buyPrice);
+        }
+        return profit;
     }
 
 }
